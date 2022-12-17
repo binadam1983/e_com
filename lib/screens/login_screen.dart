@@ -37,14 +37,7 @@ class LoginScreen extends StatelessWidget {
     // await auth0.webAuthentication().login();
 
     try {
-      final GoogleSignIn googleSignIn = GoogleSignIn(
-        clientId:
-            '911595939692-ou0ftm92dchhbq0fja12kvt0tmmru0te.apps.googleusercontent.com',
-        scopes: [
-          'email',
-          'https://www.googleapis.com/auth/contacts.readonly',
-        ],
-      );
+      final GoogleSignIn googleSignIn = GoogleSignIn();
 
       final GoogleSignInAccount? googleSignInAccount =
           await googleSignIn.signIn();
