@@ -1,16 +1,19 @@
-# e_com
+# Flutter E-Commerce App(Android+iOS) using Bloc(Cubit) pattern & Firebese Authentication / Firestore
 
-A new Flutter project.
+![](screenshots/splash.png)
+![](screenshots/login.png)
+![](screenshots/home1.png)
+![](screenshots/home2.png)
+![](screenshots/best_selling.png)
+![](screenshots/new_arrival.png)
+![](screenshots/categories.png)
+![](screenshots/all_products.png)
+![](screenshots/search_products.png)
+![](screenshots/product_details_page.png)
+![](screenshots/wishlist.png)
+![](screenshots/cart.png)
+![](screenshots/drawer.png)
+![](screenshots/bloc_pattern.png)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
