@@ -1,9 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_com/models/models.dart';
-import 'package:e_com/screens/home_screen.dart';
-import 'package:e_com/screens/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
-import 'package:flutter/material.dart';
 
 final userRecord = FirebaseFirestore.instance.collection('users');
 

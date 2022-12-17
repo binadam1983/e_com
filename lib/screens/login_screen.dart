@@ -50,9 +50,9 @@ class LoginScreen extends StatelessWidget {
           accessToken: googleSignInAuthentication.accessToken,
           idToken: googleSignInAuthentication.idToken,
         );
-        print('Auth Creds: $authCredentials');
-        UserCredential result =
-            await FirebaseAuth.instance.signInWithCredential(authCredentials);
+        // print('Auth Creds: $authCredentials');
+        // UserCredential result =
+        await FirebaseAuth.instance.signInWithCredential(authCredentials);
         // User? user = result.user;
         // print('user: $authCredentials');
         return null;
@@ -109,7 +109,7 @@ class LoginScreen extends StatelessWidget {
             callback: () async {
               final result = await _loginGoogle();
               if (result != null) {
-                print(result);
+                // print(result);
                 Navigator.of(context, rootNavigator: true)
                     .pushNamed(LoginScreen.routeName);
               }
