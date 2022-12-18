@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # e-CART: A Flutter e-commerce App (Android, iOS) using BLOC pattern
 
 A work-in-progress mobile app that features:
@@ -48,18 +47,3 @@ A work-in-progress mobile app that features:
 </p>
 
 
-
-
-
-=======
-# Flutter E-Commerce App(Android+iOS) using Bloc(Cubit) pattern & Firebese Authentication / Firestore
-
-![](screenshots/splash.png) ![](screenshots/login.png) ![](screenshots/home1.png)
-![](screenshots/home2.png) ![](screenshots/best_selling.png) ![](screenshots/new_arrival.png)
-![](screenshots/categories.png) ![](screenshots/all_products.png) ![](screenshots/search_products.png)
-![](screenshots/product_details_page.png) ![](screenshots/wishlist.png) ![](screenshots/cart.png)
-![](screenshots/drawer.png) ![](screenshots/bloc_pattern.png)
-
-
-
->>>>>>> a83db54f2d7b8ddb2270104bfae9194b90b56fc9
