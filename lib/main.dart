@@ -65,6 +65,17 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRouter.onGenerateRoutes,
         initialRoute: SplashScreen.routeName,
+        home: BlocBuilder<AuthCubit, AuthState>(
+          builder: (context, state) {
+            if (state is AppState) {
+              return FlowBuilder(
+                  state: context.select((context) => state.appStatus),
+                  onGeneratePages: onGenerateAppViewPages);
+            } else {
+              return const Center(child: Text('Something Went Wrong!'));
+            }
+          },
+        ),
       ),
     );
   }
