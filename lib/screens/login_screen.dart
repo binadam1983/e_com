@@ -37,7 +37,14 @@ class LoginScreen extends StatelessWidget {
     // await auth0.webAuthentication().login();
 
     try {
-      final GoogleSignIn googleSignIn = GoogleSignIn();
+      final GoogleSignIn googleSignIn = GoogleSignIn(
+        clientId:
+            '911595939692-ou0ftm92dchhbq0fja12kvt0tmmru0te.apps.googleusercontent.com',
+        scopes: [
+          'email',
+          'https://www.googleapis.com/auth/contacts.readonly',
+        ],
+      );
 
       final GoogleSignInAccount? googleSignInAccount =
           await googleSignIn.signIn();
@@ -50,9 +57,9 @@ class LoginScreen extends StatelessWidget {
           accessToken: googleSignInAuthentication.accessToken,
           idToken: googleSignInAuthentication.idToken,
         );
-        // print('Auth Creds: $authCredentials');
-        // UserCredential result =
-        await FirebaseAuth.instance.signInWithCredential(authCredentials);
+        print('Auth Creds: $authCredentials');
+        UserCredential result =
+            await FirebaseAuth.instance.signInWithCredential(authCredentials);
         // User? user = result.user;
         // print('user: $authCredentials');
         return null;
@@ -90,7 +97,7 @@ class LoginScreen extends StatelessWidget {
         },
         onRecoverPassword: _recoverPassword,
         theme: LoginTheme(
-          primaryColor: Colors.deepPurple,
+          primaryColor: const Color.fromARGB(255, 124, 25, 163),
           accentColor: Colors.black,
           errorColor: Colors.orange,
           titleStyle: const TextStyle(
@@ -109,7 +116,7 @@ class LoginScreen extends StatelessWidget {
             callback: () async {
               final result = await _loginGoogle();
               if (result != null) {
-                // print(result);
+                print(result);
                 Navigator.of(context, rootNavigator: true)
                     .pushNamed(LoginScreen.routeName);
               }
