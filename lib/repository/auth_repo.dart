@@ -67,7 +67,9 @@ class AuthRepo {
   Future logout() async {
     try {
       Future.wait([_firebaseAuth.signOut()]);
-    } catch (_) {}
+    } on firebase_auth.FirebaseAuthException catch (e) {
+      print('LOGOUT ERROR: ${e}');
+    }
   }
 
   Future recoverPassword({required String email}) async {

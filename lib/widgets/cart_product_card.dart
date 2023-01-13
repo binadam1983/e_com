@@ -37,10 +37,10 @@ class ProductCard extends StatelessWidget {
           ),
           const SizedBox(width: 5),
           SizedBox(
-            width: 150,
+            width: 135,
             height: 100,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(5.0),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -53,38 +53,40 @@ class ProductCard extends StatelessWidget {
                         style: Styles.body2.copyWith(
                             color: Colors.grey, fontWeight: FontWeight.bold)),
                     const SizedBox(
-                      height: 20,
+                      height: 25,
                     ),
                     Text('\$${product.price}',
-                        style: Styles.heading5.copyWith(
+                        style: Styles.body1.copyWith(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold)),
                   ]),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              IconButton(
-                onPressed: () {
-                  BlocProvider.of<CartCubit>(context).removeProduct(product);
-                },
-                icon: const Icon(
-                  Icons.remove_circle_rounded,
-                  size: 30,
-                ),
-              ),
-              Text(quantity.toString(),
-                  style: Styles.heading5.copyWith(color: Colors.black87)),
-              IconButton(
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
                   onPressed: () {
-                    BlocProvider.of<CartCubit>(context).addProduct(product);
+                    BlocProvider.of<CartCubit>(context).removeProduct(product);
                   },
                   icon: const Icon(
-                    Icons.add_circle_rounded,
+                    Icons.remove_circle_rounded,
                     size: 30,
-                  )),
-            ],
+                  ),
+                ),
+                Text(quantity.toString(),
+                    style: Styles.heading5.copyWith(color: Colors.black87)),
+                IconButton(
+                    onPressed: () {
+                      BlocProvider.of<CartCubit>(context).addProduct(product);
+                    },
+                    icon: const Icon(
+                      Icons.add_circle_rounded,
+                      size: 30,
+                    )),
+              ],
+            ),
           ),
         ],
       ),

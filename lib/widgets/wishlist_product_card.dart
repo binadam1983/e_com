@@ -18,7 +18,8 @@ class WishlistProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      width: MediaQuery.of(context).size.width*.9,
+        margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
         decoration: BoxDecoration(
           border: Border.all(color: Colors.grey.shade400),
           borderRadius: BorderRadius.circular(10),
@@ -50,7 +51,7 @@ class WishlistProductCard extends StatelessWidget {
                           style: Styles.body1.copyWith(
                               color: Colors.black87,
                               fontWeight: FontWeight.bold)),
-                      Text('Category: ${product.category}',
+                      Text(product.category,
                           style: Styles.body2.copyWith(
                               color: Colors.grey, fontWeight: FontWeight.bold)),
                       const SizedBox(
@@ -58,7 +59,7 @@ class WishlistProductCard extends StatelessWidget {
                       ),
                       Expanded(
                         child: Text('\$${product.price}',
-                            style: Styles.heading5.copyWith(
+                            style: Styles.body1.copyWith(
                                 color: Colors.black87,
                                 fontWeight: FontWeight.bold)),
                       ),
@@ -74,7 +75,7 @@ class WishlistProductCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     FadeInDown(
-                      delay: const Duration(milliseconds: 1000),
+                      delay: const Duration(milliseconds: 500),
                       child: IconButton(
                         onPressed: () {
                           BlocProvider.of<WishlistCubit>(context)

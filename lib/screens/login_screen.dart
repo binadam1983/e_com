@@ -6,8 +6,6 @@ import 'package:e_com/screens/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
-
-import '../constants/styles.dart';
 // import 'package:auth0_flutter/auth0_flutter.dart';
 
 // final auth0 = Auth0(
@@ -23,7 +21,6 @@ class LoginScreen extends StatelessWidget {
 
   Duration get loginTime => const Duration(milliseconds: 1000);
   FirebaseException? firebaseException;
-  // String? email;
 
   Future<String?> _authUser(LoginData data) async {
     final result =
@@ -32,24 +29,32 @@ class LoginScreen extends StatelessWidget {
   }
 
   Future<String?> _loginGoogle() async {
-    // debugPrint('start google sign in');
+    debugPrint('start google sign in');
     // await auth0.webAuthentication(scheme: 'demo').login();
     // await auth0.webAuthentication().login();
 
     try {
       final GoogleSignIn googleSignIn = GoogleSignIn(
-        clientId:
-            '911595939692-ou0ftm92dchhbq0fja12kvt0tmmru0te.apps.googleusercontent.com',
-        scopes: [
-          'email',
-          'https://www.googleapis.com/auth/contacts.readonly',
-        ],
+        // clientId: '911595939692-f5e8fkadbrt7rqreu7nr9v4jleerltpd.apps.googleusercontent.com',
+        // scopes: [
+        //   'email',
+        //   'https://www.googleapis.com/auth/contacts.readonly',
+        // ],
       );
+      // await googleSignIn.signIn().then((value) {
+      //   String userName = value!.email;
+      //   String? photo = value.photoUrl;
+      //   debugPrint("$userName, $photo");
+               
+      // } );
 
       final GoogleSignInAccount? googleSignInAccount =
           await googleSignIn.signIn();
+          debugPrint("googleSignInAccount: $googleSignInAccount");
+      
 
       if (googleSignInAccount != null) {
+        debugPrint("googleSignInAccount: $googleSignInAccount");
         final GoogleSignInAuthentication googleSignInAuthentication =
             await googleSignInAccount.authentication;
 
@@ -61,13 +66,13 @@ class LoginScreen extends StatelessWidget {
         UserCredential result =
             await FirebaseAuth.instance.signInWithCredential(authCredentials);
         // User? user = result.user;
-        // print('user: $authCredentials');
+        print('user: $result');
         return null;
       }
     } on PlatformException catch (e) {
       if (e.message!.contains('failed') ||
           e.message!.contains('ApiException')) {
-        // print('Google sign in exception cought: ${e.message}');
+        print('Google sign in exception cought: ${e.message}');
         return e.message;
       }
     }
@@ -116,7 +121,7 @@ class LoginScreen extends StatelessWidget {
             callback: () async {
               final result = await _loginGoogle();
               if (result != null) {
-                print(result);
+                print("result: $result");
                 Navigator.of(context, rootNavigator: true)
                     .pushNamed(LoginScreen.routeName);
               }
@@ -124,7 +129,6 @@ class LoginScreen extends StatelessWidget {
           ),
         ]);
   }
-}
 
 // class GOOGLE_SIGNIN_BUTTON extends StatelessWidget {
 //   const GOOGLE_SIGNIN_BUTTON({super.key});
@@ -146,3 +150,4 @@ class LoginScreen extends StatelessWidget {
 //                                 ));
 //   }
 // }
+}

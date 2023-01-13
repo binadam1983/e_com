@@ -6,7 +6,7 @@ import 'models.dart';
 class CartModel extends Equatable {
   final List<Product> products;
 
-  CartModel({this.products = const <Product>[]});
+  const CartModel({this.products = const <Product>[]});
 
   Map productQuantityMap(products) {
     var result = Map();

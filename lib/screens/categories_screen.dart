@@ -48,10 +48,13 @@ class CategoriesScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 5),
-                        Text(
-                          category!.toUpperCase(),
-                          style:
-                              Styles.heading4.copyWith(color: Colors.black87),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            category!.toUpperCase(),
+                            style:
+                                Styles.heading4.copyWith(color: Colors.black87),
+                          ),
                         ),
                         const SizedBox(height: 10),
                         GridViewBuilder(
@@ -84,10 +87,13 @@ class CategoriesScreen extends StatelessWidget {
                               return Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    categories![index].name.toUpperCase(),
-                                    style: Styles.heading4
-                                        .copyWith(color: Colors.black87),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                    child: Text(
+                                      categories![index].name.toUpperCase(),
+                                      style: Styles.heading4
+                                          .copyWith(color: Colors.black87),
+                                    ),
                                   ),
                                   const SizedBox(
                                     height: 10,

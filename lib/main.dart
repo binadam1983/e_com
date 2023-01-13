@@ -9,11 +9,15 @@ import 'package:e_com/app_router/app_router.dart';
 import 'package:e_com/constants/styles.dart';
 import 'package:e_com/repository/repos.dart';
 import 'package:e_com/screens/screens.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'app_router/initial_routes.dart';
 import 'logic/cubits.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Stripe.publishableKey =
+      'pk_test_51M80UlELKVVYCS7SnLlzkxbTrL1uliSnP4EomGpBu0wWFd2pHrCeM2nWX9f4CBWoKLFRhnYHtVKHF81ZqMhAVIpz00n7lBP0VF';
+  Stripe.instance.applySettings();
   await Firebase.initializeApp();
   runApp(MyApp(
     categoryRepo: CategoryRepo(),

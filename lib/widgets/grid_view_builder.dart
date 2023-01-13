@@ -22,26 +22,12 @@ class GridViewBuilder extends StatelessWidget {
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         shrinkWrap: true,
         itemCount: products.length,
-        itemBuilder: (context, index) => Container(
+        itemBuilder: (context, index) => SizedBox(
           width: size.width * .44,
-          height: 190,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              ProductLayout(
-                  product: products[index],
-                  width: size.width * .44,
-                  height: 160),
-              Text(
-                products[index].name,
-                style: Styles.body1,
-              ),
-              // Text(
-              //   products[index].price.toString(),
-              //   style: Styles.body1,
-              // ),
-            ],
-          ),
+          height: 210,
+          child: ProductLayout(
+              product: products[index],
+              width: size.width * .44),
         ),
       ),
     );

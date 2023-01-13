@@ -68,9 +68,15 @@ class HomeScreen extends StatelessWidget {
                             ),
                             padding: const EdgeInsets.symmetric(
                                 vertical: 20.0, horizontal: 20.0),
-                            child: Text('New Arrivals',
-                                style: Styles.heading2
-                                    .copyWith(color: Colors.white)),
+                            child: Row(
+                              children: [
+                                Text('New Arrivals',
+                                    style: Styles.heading2
+                                        .copyWith(color: Colors.white)),
+                                const SizedBox(width: 5,),
+                                const Icon(Icons.arrow_right_alt, size: 40, color: Colors.white,)
+                              ],
+                            ),
                           ),
                         ),
                       ],

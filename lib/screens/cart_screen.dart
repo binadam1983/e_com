@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
 import 'package:e_com/constants/styles.dart';
 import 'package:e_com/logic/cart/cart_cubit.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:e_com/models/models.dart';
 import 'package:e_com/widgets/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:url_launcher/link.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:http/http.dart' as http;
+// import 'package:url_launcher/link.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({
@@ -32,8 +36,8 @@ class CartScreen extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             } else if (state is CartLoaded && state.cart.products.isNotEmpty) {
-              return Padding(
-                padding: const EdgeInsets.all(10.0),
+              return Container(
+                margin: const EdgeInsets.symmetric(horizontal: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -52,8 +56,6 @@ class CartScreen extends StatelessWidget {
                                     .pushNamed('/');
                               },
                               style: ElevatedButton.styleFrom(
-                                // side: const BorderSide(width: 2, color: Colors.black87),
-                                // backgroundColor: Colors.deepPurple,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30)),
                               ),
@@ -154,42 +156,46 @@ class CartScreen extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(height: 10),
-                              Link(
-                                  uri: Uri.parse(
-                                      'https://buy.stripe.com/test_00g9DKdc7d1kdJC4gi'),
-                                  builder: ((context, followLink) {
-                                    return ElevatedButton(
-                                      onPressed: followLink,
-                                      // onPressed: _launchUrl,
-                                      style: ElevatedButton.styleFrom(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 8, horizontal: 10),
-                                        // side: const BorderSide(width: 2, color: Colors.black87),
-                                        // backgroundColor: Colors.black87,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(30)),
-                                      ),
-                                      child: Text('Proceed to Checkout',
-                                          style: Styles.heading4),
-                                    );
-                                  })),
+                              ElevatedButton(
+                                onPressed: () async {
+                                  await initPayment(
+                                      amount: 5000,
+                                      context: context,
+                                      email: 'email@test.com');
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 8, horizontal: 10),
+                                  // side: const BorderSide(width: 2, color: Colors.black87),
+                                  // backgroundColor: Colors.black87,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30)),
+                                ),
+                                child: Text('Proceed to Checkout',
+                                    style: Styles.heading4),
+                              ),
+                              // Link(
+                              //     uri: Uri.parse(
+                              //         'https://buy.stripe.com/test_00g9DKdc7d1kdJC4gi'),
+                              //     builder: ((context, followLink) {
+                              //       return ElevatedButton(
+                              //         onPressed: followLink,
+                              //         // onPressed: _launchUrl,
+                              //         style: ElevatedButton.styleFrom(
+                              //           padding: const EdgeInsets.symmetric(
+                              //               vertical: 8, horizontal: 10),
+                              //           // side: const BorderSide(width: 2, color: Colors.black87),
+                              //           // backgroundColor: Colors.black87,
+                              //           shape: RoundedRectangleBorder(
+                              //               borderRadius:
+                              //                   BorderRadius.circular(30)),
+                              //         ),
+                              //         child: Text('Proceed to Checkout',
+                              //             style: Styles.heading4),
+                              //       );
+                              //     })),
                             ],
                           ),
-
-                          // ElevatedButton(
-                          //   onPressed: _launchUrl,
-                          //   style: ElevatedButton.styleFrom(
-                          //     padding: const EdgeInsets.symmetric(
-                          //         vertical: 8, horizontal: 65),
-                          //     // side: const BorderSide(width: 2, color: Colors.black87),
-                          //     backgroundColor: Colors.black87,
-                          //     shape: RoundedRectangleBorder(
-                          //         borderRadius: BorderRadius.circular(30)),
-                          //   ),
-                          //   child: Text('Proceed to Checkout',
-                          //       style: Styles.heading4),
-                          // ),
                           const SizedBox(
                             height: 8,
                           ),
@@ -214,10 +220,57 @@ class CartScreen extends StatelessWidget {
         ));
   }
 
-  // Future<void> _launchUrl() async {
-  //   final Uri url = Uri.parse('https://buy.stripe.com/test_eVa17e4FB0eyeNG289');
-  //   if (!await canLaunchUrl(url)) {
-  //     print('cant Launch URL');
-  //   }
-  // }
+  Future<void> initPayment(
+      {required String email,
+      required double amount,
+      required BuildContext context}) async {
+    try {
+      // 1. Create a payment intent on the server
+      final response = await http.post(
+        Uri.parse('http://10.0.2.2:4242/create-payment-intent'),
+        headers: <String, String>{
+          'content-type': 'application/json',
+        },
+        body: jsonEncode(<String, String>{
+          'email': email,
+          'amount': amount.toString(),
+        }),
+      );
+      print(response.body.toString());
+
+      final jsonResponse = jsonDecode(response.body);
+      // 2. Initialize the payment sheet
+      await Stripe.instance.initPaymentSheet(
+          paymentSheetParameters: SetupPaymentSheetParameters(
+        paymentIntentClientSecret: jsonResponse['clientSecret'],
+        // merchantDisplayName: 'Grocery Flutter course',
+        // customerId: jsonResponse['customer'],
+        // customerEphemeralKeySecret: jsonResponse['ephemeralKey'],
+        // testEnv: true,
+        // merchantCountryCode: 'SG',
+      ));
+      await Stripe.instance.presentPaymentSheet();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Payment is successful'),
+        ),
+      );
+    } catch (errorr) {
+      if (errorr is StripeException) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content:
+                Text('An error occured 123 ${errorr.error.localizedMessage}'),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('An error occured $errorr'),
+          ),
+        );
+        print(errorr);
+      }
+    }
+  }
 }
