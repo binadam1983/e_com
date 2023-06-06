@@ -1,5 +1,5 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:e_com/constants/styles.dart';
 import 'package:e_com/logic/cart/cart_cubit.dart';
 import 'package:flutter/material.dart';
@@ -32,9 +32,9 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             ),
             BlocBuilder<CartCubit, CartState>(builder: (context, state) {
               if (state is CartLoaded) {
-                return Badge(
-                  badgeColor: Colors.white,
-                  position: BadgePosition.topEnd(top: 0, end: 3),
+                return badges.Badge(
+                  badgeStyle: const badges.BadgeStyle(badgeColor: Colors.white,),                  
+                  position: badges.BadgePosition.topEnd(top: 0, end: 3),
                   badgeContent: Text(state.cart.products.length.toString(),
                       style: Styles.body2.copyWith(
                         fontSize: 11,

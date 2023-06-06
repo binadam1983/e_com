@@ -41,7 +41,7 @@ dependencies:
   firebase_core: any
   cloud_firestore: any
   carousel_slider: any
-  badges: any
+  badges: ^3.1.1
   flutter_bloc: any
   equatable: any
   flutter_svg: any
