@@ -6,7 +6,6 @@ import 'package:e_com/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../widgets/onsale.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -23,7 +22,7 @@ class HomeScreen extends StatelessWidget {
     // final User user =
     //     context.select((AuthCubit bloc) => bloc.state.(value) => value.User(id: id) ?? User.empty);
 
-    final size = MediaQuery.of(context).size;
+    // final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: CustomAppBar(

@@ -68,7 +68,7 @@ class AuthRepo {
     try {
       Future.wait([_firebaseAuth.signOut()]);
     } on firebase_auth.FirebaseAuthException catch (e) {
-      print('LOGOUT ERROR: ${e}');
+      print('LOGOUT ERROR: $e');
     }
   }
 

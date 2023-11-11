@@ -16,7 +16,7 @@ class CartLoading extends CartState {
 class CartLoaded extends CartState {
   final CartModel cart;
 
-  CartLoaded({
+  const CartLoaded({
     required this.cart,
   });
 

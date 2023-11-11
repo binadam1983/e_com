@@ -76,15 +76,18 @@ class LoginScreen extends StatelessWidget {
         return e.message;
       }
     }
+    return null;
   }
 
   Future<String?> _signupUser(SignupData data) async {
     authRepo.signUp(email: data.name, password: data.password);
+    return null;
   }
 
   Future<String?> _recoverPassword(String email) async {
     // debugPrint('Name: $name');
     authRepo.recoverPassword(email: email);
+    return null;
   }
 
   @override
@@ -125,6 +128,7 @@ class LoginScreen extends StatelessWidget {
                 Navigator.of(context, rootNavigator: true)
                     .pushNamed(LoginScreen.routeName);
               }
+              return null;
             },
           ),
         ]);

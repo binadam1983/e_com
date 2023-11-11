@@ -30,6 +30,7 @@ class SearchScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            const Padding(padding: EdgeInsets.all(8.0)),
             ListTile(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),

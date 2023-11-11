@@ -50,9 +50,6 @@ dependencies:
   flutter_spinkit: any
   flutter_login: any
   http: any
-  # flutter_appauth: any
-  # flutter_secure_storage: any
-  # auth0_flutter: any
   font_awesome_flutter: any
   flow_builder: any
   google_sign_in: any

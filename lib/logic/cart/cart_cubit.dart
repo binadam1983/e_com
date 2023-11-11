@@ -8,7 +8,7 @@ class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartLoading()) {
     if (state is CartLoading) {
       Future<void>.delayed(const Duration(seconds: 1));
-      emit(CartLoaded(cart: CartModel(products: const <Product>[])));
+      emit(const CartLoaded(cart: CartModel(products: <Product>[])));
     }
   }
 

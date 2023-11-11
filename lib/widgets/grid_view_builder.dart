@@ -2,7 +2,6 @@ import 'package:e_com/models/product_model.dart';
 import 'package:e_com/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
-import '../constants/styles.dart';
 
 class GridViewBuilder extends StatelessWidget {
   const GridViewBuilder({
@@ -15,11 +14,12 @@ class GridViewBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    final orientation = MediaQuery.of(context).orientation;
     return SingleChildScrollView(
       child: GridView.builder(
         padding: const EdgeInsets.all(0),
         gridDelegate:
-            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: orientation == Orientation.portrait ? 2 : 3),
         shrinkWrap: true,
         itemCount: products.length,
         itemBuilder: (context, index) => SizedBox(

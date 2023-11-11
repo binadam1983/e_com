@@ -13,7 +13,7 @@ class Product extends Equatable {
   final bool isNewArrival;
   final bool isOnSale;
 
-  Product({
+  const Product({
     required this.name,
     required this.category,
     required this.imageUrl,
@@ -37,7 +37,7 @@ class Product extends Equatable {
   }
 
   static List<Product> products = [
-    Product(
+    const Product(
         name: 'Shampoo',
         category: 'Shampoos',
         imageUrl: 'assets/images/bestsell0.jpg',
@@ -45,7 +45,7 @@ class Product extends Equatable {
         isBestSelling: true,
         isNewArrival: true,
         isOnSale: true),
-    Product(
+    const Product(
         name: 'Summer Shirts',
         category: 'Clothes',
         imageUrl: 'assets/images/bestsell1.jpg',
@@ -53,7 +53,7 @@ class Product extends Equatable {
         isBestSelling: true,
         isNewArrival: true,
         isOnSale: true),
-    Product(
+    const Product(
         name: 'Wireless Headphones',
         category: 'Electronics',
         imageUrl: 'assets/images/bestsell3.jpg',
@@ -61,7 +61,7 @@ class Product extends Equatable {
         isBestSelling: true,
         isNewArrival: true,
         isOnSale: true),
-    Product(
+    const Product(
         name: 'Apple iPhone 14',
         category: 'Electronics',
         imageUrl: 'assets/images/bestsell4.jpg',
@@ -69,7 +69,7 @@ class Product extends Equatable {
         isBestSelling: true,
         isNewArrival: true,
         isOnSale: true),
-    Product(
+    const Product(
         name: 'Wrist Watch',
         category: 'Watches',
         imageUrl: 'assets/images/bestsell5.jpg',
@@ -77,7 +77,7 @@ class Product extends Equatable {
         isBestSelling: true,
         isNewArrival: true,
         isOnSale: false),
-    Product(
+    const Product(
         name: 'Nike-Sneakers',
         category: 'Sneakers',
         imageUrl: 'assets/images/new_arrival0.jpg',
@@ -85,7 +85,7 @@ class Product extends Equatable {
         isBestSelling: true,
         isNewArrival: true,
         isOnSale: true),
-    Product(
+    const Product(
         name: 'Sneakers-1',
         category: 'Sneakers',
         imageUrl: 'assets/images/new_arrival1.jpg',
@@ -93,7 +93,7 @@ class Product extends Equatable {
         isBestSelling: false,
         isNewArrival: true,
         isOnSale: true),
-    Product(
+    const Product(
         name: 'Sneakers-3',
         category: 'Sneakers',
         imageUrl: 'assets/images/new_arrival2.jpg',
@@ -101,7 +101,7 @@ class Product extends Equatable {
         isBestSelling: false,
         isNewArrival: true,
         isOnSale: true),
-    Product(
+    const Product(
         name: 'Sneakers-2',
         category: 'Sneakers',
         imageUrl: 'assets/images/new_arrival3.jpg',
@@ -109,7 +109,7 @@ class Product extends Equatable {
         isBestSelling: false,
         isNewArrival: true,
         isOnSale: true),
-    Product(
+    const Product(
         name: 'Sneakers-4',
         category: 'Sneakers',
         imageUrl: 'assets/images/new_arrival4.jpg',
@@ -117,7 +117,7 @@ class Product extends Equatable {
         isBestSelling: false,
         isNewArrival: true,
         isOnSale: true),
-    Product(
+    const Product(
         name: 'Shampoo-1',
         category: 'Shampoos',
         imageUrl: 'assets/images/shampoo1.jpg',
@@ -125,7 +125,7 @@ class Product extends Equatable {
         isBestSelling: false,
         isNewArrival: false,
         isOnSale: true),
-    Product(
+    const Product(
         name: 'Shampoo-2',
         category: 'Shampoos',
         imageUrl: 'assets/images/shampoo2.jpg',
@@ -133,7 +133,7 @@ class Product extends Equatable {
         isBestSelling: false,
         isNewArrival: false,
         isOnSale: true),
-    Product(
+    const Product(
         name: 'Shampoo-3',
         category: 'Shampoos',
         imageUrl: 'assets/images/shampoo2.jpg',
@@ -141,7 +141,7 @@ class Product extends Equatable {
         isBestSelling: false,
         isNewArrival: false,
         isOnSale: true),
-    Product(
+    const Product(
         name: 'Shampoo-4',
         category: 'Shampoos',
         imageUrl: 'assets/images/shampoo1.jpg',
@@ -149,7 +149,7 @@ class Product extends Equatable {
         isBestSelling: false,
         isNewArrival: false,
         isOnSale: true),
-    Product(
+    const Product(
         name: 'perfume-1',
         category: 'perfumes',
         imageUrl: 'assets/images/perfume1.jpg',
@@ -157,7 +157,7 @@ class Product extends Equatable {
         isBestSelling: false,
         isNewArrival: false,
         isOnSale: true),
-    Product(
+    const Product(
         name: 'perfume-2',
         category: 'perfumes',
         imageUrl: 'assets/images/perfume2.jpg',

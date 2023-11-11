@@ -84,7 +84,7 @@ class WishlistProductCard extends StatelessWidget {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               backgroundColor: Colors.red,
                               content: Text(
-                                  '${product.name} removed from Wishlist')));
+                                  '${product.name} removed from wishlist')));
                         },
                         icon: (const Icon(Icons.delete, size: 30)),
                       ),
@@ -96,7 +96,7 @@ class WishlistProductCard extends StatelessWidget {
                               .addProduct(product);
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content:
-                                Text('${product.name} added to the Wishlist'),
+                                Text('${product.name} added to the cart'),
                             backgroundColor: Colors.blueGrey,
                           ));
                         },

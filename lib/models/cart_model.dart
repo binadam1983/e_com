@@ -9,7 +9,7 @@ class CartModel extends Equatable {
   const CartModel({this.products = const <Product>[]});
 
   Map productQuantityMap(products) {
-    var result = Map();
+    var result = {};
 
     products.forEach((product) {
       if (result.containsKey(product)) {

@@ -6,7 +6,7 @@ class Category extends Equatable {
   final String name;
   final String imageUrl;
 
-  Category({
+  const Category({
     required this.name,
     required this.imageUrl,
   });
@@ -19,10 +19,10 @@ class Category extends Equatable {
   }
 
   static List<Category> categories = [
-    Category(name: 'Shampoos', imageUrl: 'assets/images/category0.jpg'),
-    Category(name: 'Clothes', imageUrl: 'assets/images/category1.jpg'),
-    Category(name: 'Perfumes', imageUrl: 'assets/images/category2.jpg'),
-    Category(name: 'Sneakers', imageUrl: 'assets/images/new_arrival3.jpg'),
+    const Category(name: 'Shampoos', imageUrl: 'assets/images/category0.jpg'),
+    const Category(name: 'Clothes', imageUrl: 'assets/images/category1.jpg'),
+    const Category(name: 'Perfumes', imageUrl: 'assets/images/category2.jpg'),
+    const Category(name: 'Sneakers', imageUrl: 'assets/images/new_arrival3.jpg'),
   ];
 
   @override
