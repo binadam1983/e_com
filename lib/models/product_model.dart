@@ -36,7 +36,7 @@ class Product extends Equatable {
     return product;
   }
 
-  static List<Product> products = [
+  /* static List<Product> products = [
     const Product(
         name: 'Shampoo',
         category: 'Shampoos',
@@ -166,7 +166,7 @@ class Product extends Equatable {
         isNewArrival: false,
         isOnSale: false),
   ];
-
+ */
   @override
   List<Object?> get props => [name, category, imageUrl, price, isBestSelling];
 
